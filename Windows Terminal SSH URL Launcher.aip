@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="18.9" version="18.9" Modules="simple" RootPath="." Language="en" Id="{A6A64B89-F827-41A2-8D07-159006D49FB3}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="18.9" version="21.9" Modules="simple" RootPath="." Language="en" Id="{A6A64B89-F827-41A2-8D07-159006D49FB3}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
-    <ROW Property="AI_CURRENT_YEAR" Value="2021" ValueLocId="-"/>
     <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="Manufacturer" Value="Andreas Westerlind"/>
-    <ROW Property="ProductCode" Value="1033:{60EDEAB6-D092-4278-8B3C-35CB162DF693} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{10056C26-FEF3-49BD-997B-F280CAD8D7D9} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Windows Terminal SSH URL Launcher"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.1.0" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{828626CC-AACD-4985-BE53-7656D176047B}"/>
@@ -21,6 +20,8 @@
     <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -28,36 +29,61 @@
     <ROW Directory="NewFolder_Dir" Directory_Parent="LocalAppDataFolder" DefaultDir="WINDOW~1|WindowsTerminalLauncher"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SideBySideGuidComponent">
+    <ROW Component="APPDIR" Value="{8AA2D900-2753-4526-B537-68B7FBFA25F6}"/>
+    <ROW Component="NoOpenWith" Value="{33D68412-6C97-4675-BEDA-FE7FCEA79776}"/>
+    <ROW Component="NoOpenWith_1" Value="{C446885E-7C38-4417-BA8C-A9682D071847}"/>
+    <ROW Component="NoOpenWith_2" Value="{CEC940CB-1DC1-4C1C-B738-6D3397EB632C}"/>
+    <ROW Component="PowershellLauncher" Value="{7FBCDE80-5D2C-46A0-AFD7-251E77EF0172}"/>
+    <ROW Component="WindowsTerminalLauncher" Value="{0B1108CF-2AFD-4C75-884A-B810EFC7218F}"/>
+    <ROW Component="WindowsTerminalLauncher.Url.Launcher_ssh" Value="{4E69DFA3-9BEF-4761-9A8F-A5A5A134F16D}"/>
+    <ROW Component="_" Value="{FA160212-D72E-4AD6-AAA1-E6A39B685E00}"/>
+    <ROW Component="__1" Value="{E7E713B7-484E-46A8-9A6C-C9C8725E4F6D}"/>
+    <ROW Component="__2" Value="{9A896042-BD29-488F-A4A7-6FA7AA034C08}"/>
+    <ROW Component="__3" Value="{F0F8CCBB-5E82-482B-A6E7-7EEAC5726A9E}"/>
+    <ROW Component="__4" Value="{8A2D08C5-62D0-42D1-A260-792B52E260A5}"/>
+    <ROW Component="__5" Value="{85B47CD0-7C77-4D96-9BE3-325B745AAEF9}"/>
+    <ROW Component="__6" Value="{4E40AC04-8E02-4BA0-B4D9-CE312B3B346B}"/>
+    <ROW Component="__7" Value="{D3513E98-2199-47CE-90DE-3CFD796BF26F}"/>
+    <ROW Component="ssh" Value="{D417E7FD-BF56-45C0-ABE2-2C8CD3F666CF}"/>
+    <ROW Component="ssh_1" Value="{EA3B1461-F1AB-4AD8-8A3D-A61B860295DF}"/>
+    <ROW Component="ssh_2" Value="{C93DCF22-7D72-45CA-B620-D0FC65D0E84D}"/>
+    <ROW Component="windowsterminalsshurl.bat_1" Value="{94B7B152-E25C-48AD-B964-D92738120AA9}"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="APPDIR" ComponentId="{D21A3F17-5534-4B91-BA18-62668845B49A}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="NoOpenWith" ComponentId="{44B3E787-655A-4767-8321-C7E598F4F706}" Directory_="APPDIR" Attributes="4" KeyPath="NoOpenWith"/>
-    <ROW Component="NoOpenWith_1" ComponentId="{0C7C1894-6D00-42AA-84FF-4FC277D4385E}" Directory_="APPDIR" Attributes="4" KeyPath="NoOpenWith_1"/>
-    <ROW Component="NoOpenWith_2" ComponentId="{D4091D18-E359-4845-9E87-C4E73C81C016}" Directory_="APPDIR" Attributes="4" KeyPath="NoOpenWith_2"/>
-    <ROW Component="PowershellLauncher" ComponentId="{F6099393-2754-41B7-834B-D9807F3B18B6}" Directory_="APPDIR" Attributes="4" KeyPath="PowershellLauncher"/>
-    <ROW Component="WindowsTerminalLauncher" ComponentId="{63F89F7E-8D46-4ED8-BA72-E1BFA32A5B73}" Directory_="NewFolder_Dir" Attributes="0"/>
-    <ROW Component="WindowsTerminalLauncher.Url.Launcher_ssh" ComponentId="{5942597D-4714-451B-BA1D-42B52E351B0B}" Directory_="APPDIR" Attributes="4" KeyPath="WindowsTerminalLauncher.Url.Launc_2"/>
-    <ROW Component="_" ComponentId="{3B602596-0E40-436C-B225-8F624AD01D43}" Directory_="APPDIR" Attributes="4" KeyPath="_"/>
-    <ROW Component="__1" ComponentId="{B60710F6-E2AD-416A-AEEE-E181BBAFB1FB}" Directory_="APPDIR" Attributes="4" KeyPath="__1"/>
-    <ROW Component="__2" ComponentId="{07388EE8-C134-48E3-A200-AC151607167E}" Directory_="APPDIR" Attributes="4" KeyPath="__2"/>
-    <ROW Component="__3" ComponentId="{B4A0BEAD-A570-4FE5-96B7-ABA32E68AAC2}" Directory_="APPDIR" Attributes="4" KeyPath="__3"/>
-    <ROW Component="__4" ComponentId="{A6DC6881-CD7F-469D-9BE4-5710779CCE1B}" Directory_="APPDIR" Attributes="4" KeyPath="__4"/>
-    <ROW Component="__5" ComponentId="{FE06132A-5084-4175-8941-77011EEE175E}" Directory_="APPDIR" Attributes="4" KeyPath="__5"/>
-    <ROW Component="__6" ComponentId="{FDDDDCD5-7440-4C78-A5AB-87BF0AF8FAF5}" Directory_="APPDIR" Attributes="4" KeyPath="__6"/>
-    <ROW Component="__7" ComponentId="{C85A76B3-07CD-43AA-A8CF-142C7F4C0080}" Directory_="APPDIR" Attributes="4" KeyPath="__7"/>
-    <ROW Component="ssh" ComponentId="{4C6A4B93-9036-4A2B-B2E8-E8DA21C3EF62}" Directory_="APPDIR" Attributes="4" KeyPath="ssh"/>
-    <ROW Component="ssh_1" ComponentId="{35925DD6-03DE-4307-80E0-5F259543D2C4}" Directory_="APPDIR" Attributes="4" KeyPath="ssh_1"/>
-    <ROW Component="ssh_2" ComponentId="{FE7ADE7B-940C-4C04-B4D1-D85D224681C6}" Directory_="APPDIR" Attributes="4" KeyPath="ssh_2"/>
-    <ROW Component="windowsterminalsshurl.bat_1" ComponentId="{D7B97EE2-29BA-47DC-AC76-63947DF9E448}" Directory_="APPDIR" Attributes="0" KeyPath="windowsterminalsshurl.bat" Type="0"/>
+    <ROW Component="APPDIR" ComponentId="{8AA2D900-2753-4526-B537-68B7FBFA25F6}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="NoOpenWith" ComponentId="{33D68412-6C97-4675-BEDA-FE7FCEA79776}" Directory_="APPDIR" Attributes="4" KeyPath="NoOpenWith"/>
+    <ROW Component="NoOpenWith_1" ComponentId="{C446885E-7C38-4417-BA8C-A9682D071847}" Directory_="APPDIR" Attributes="4" KeyPath="NoOpenWith_1"/>
+    <ROW Component="NoOpenWith_2" ComponentId="{CEC940CB-1DC1-4C1C-B738-6D3397EB632C}" Directory_="APPDIR" Attributes="4" KeyPath="NoOpenWith_2"/>
+    <ROW Component="PowershellLauncher" ComponentId="{7FBCDE80-5D2C-46A0-AFD7-251E77EF0172}" Directory_="APPDIR" Attributes="4" KeyPath="PowershellLauncher"/>
+    <ROW Component="WindowsTerminalLauncher" ComponentId="{0B1108CF-2AFD-4C75-884A-B810EFC7218F}" Directory_="NewFolder_Dir" Attributes="0"/>
+    <ROW Component="WindowsTerminalLauncher.Url.Launcher_ssh" ComponentId="{4E69DFA3-9BEF-4761-9A8F-A5A5A134F16D}" Directory_="APPDIR" Attributes="4" KeyPath="WindowsTerminalLauncher.Url.Launc_2"/>
+    <ROW Component="_" ComponentId="{FA160212-D72E-4AD6-AAA1-E6A39B685E00}" Directory_="APPDIR" Attributes="4" KeyPath="_"/>
+    <ROW Component="__1" ComponentId="{E7E713B7-484E-46A8-9A6C-C9C8725E4F6D}" Directory_="APPDIR" Attributes="4" KeyPath="__1"/>
+    <ROW Component="__2" ComponentId="{9A896042-BD29-488F-A4A7-6FA7AA034C08}" Directory_="APPDIR" Attributes="4" KeyPath="__2"/>
+    <ROW Component="__3" ComponentId="{F0F8CCBB-5E82-482B-A6E7-7EEAC5726A9E}" Directory_="APPDIR" Attributes="4" KeyPath="__3"/>
+    <ROW Component="__4" ComponentId="{8A2D08C5-62D0-42D1-A260-792B52E260A5}" Directory_="APPDIR" Attributes="4" KeyPath="__4"/>
+    <ROW Component="__5" ComponentId="{85B47CD0-7C77-4D96-9BE3-325B745AAEF9}" Directory_="APPDIR" Attributes="4" KeyPath="__5"/>
+    <ROW Component="__6" ComponentId="{4E40AC04-8E02-4BA0-B4D9-CE312B3B346B}" Directory_="APPDIR" Attributes="4" KeyPath="__6"/>
+    <ROW Component="__7" ComponentId="{D3513E98-2199-47CE-90DE-3CFD796BF26F}" Directory_="APPDIR" Attributes="4" KeyPath="__7"/>
+    <ROW Component="ssh" ComponentId="{D417E7FD-BF56-45C0-ABE2-2C8CD3F666CF}" Directory_="APPDIR" Attributes="4" KeyPath="ssh"/>
+    <ROW Component="ssh_1" ComponentId="{EA3B1461-F1AB-4AD8-8A3D-A61B860295DF}" Directory_="APPDIR" Attributes="4" KeyPath="ssh_1"/>
+    <ROW Component="ssh_2" ComponentId="{C93DCF22-7D72-45CA-B620-D0FC65D0E84D}" Directory_="APPDIR" Attributes="4" KeyPath="ssh_2"/>
+    <ROW Component="windowsterminalsshurl.bat_1" ComponentId="{94B7B152-E25C-48AD-B964-D92738120AA9}" Directory_="APPDIR" Attributes="0" KeyPath="windowsterminalsshurl.bat" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="windowsterminalsshurl.bat" Component_="windowsterminalsshurl.bat_1" FileName="WINDOW~1.BAT|windows-terminal-ssh-url.bat" Attributes="0" SourcePath="C:\ProgramData\WindowsTerminalLauncher\windows-terminal-ssh-url.bat" SelfReg="false"/>
+    <ROW File="windowsterminalsshurl.bat" Component_="windowsterminalsshurl.bat_1" FileName="WINDOW~1.BAT|windows-terminal-ssh-url.bat" Attributes="0" SourcePath="..\..\..\ProgramData\WindowsTerminalLauncher\windows-terminal-ssh-url.bat" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="249"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="251"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
     <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" UseLargeSchema="true"/>
@@ -74,14 +100,21 @@
     <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
     <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
     <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
     <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
     <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
     <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
     <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
     <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_DeleteLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DeleteRLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractLzma" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
@@ -112,11 +145,21 @@
     <ROW Directory_="NewFolder_Dir" Component_="WindowsTerminalLauncher" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
     <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
+    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
     <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
     <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
@@ -153,25 +196,57 @@
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
+    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
     <ROW Action="AI_DpiContentScale" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 600)" Description="[ProductName] cannot be installed on [WindowsTypeNT60Display]." DescriptionLocId="AI.LaunchCondition.NoNT60" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="ApplicationAssociationToasts" Root="1" Key="Software\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" Name="\"/>
+    <ROW Registry="Applications" Root="0" Key="Applications" Name="\"/>
+    <ROW Registry="Applications_1" Root="1" Key="Software\Classes\Applications" Name="\"/>
+    <ROW Registry="Capabilities" Root="1" Key="Software\WindowsTerminalLauncher\Powershell Launcher\Capabilities" Name="\"/>
+    <ROW Registry="Classes" Root="1" Key="Software\Classes" Name="\"/>
+    <ROW Registry="CurrentVersion" Root="1" Key="Software\Microsoft\Windows\CurrentVersion" Name="\"/>
+    <ROW Registry="Microsoft" Root="1" Key="Software\Microsoft" Name="\"/>
     <ROW Registry="NoOpenWith" Root="0" Key="Applications\WindowsTerminalLauncher" Name="NoOpenWith" Component_="NoOpenWith"/>
     <ROW Registry="NoOpenWith_1" Root="1" Key="Software\Classes\Applications\Windows Terminal SSH URL.bat" Name="NoOpenWith" Component_="NoOpenWith_1"/>
     <ROW Registry="NoOpenWith_2" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat" Name="NoOpenWith" Component_="NoOpenWith_2"/>
     <ROW Registry="PowershellLauncher" Root="1" Key="Software\RegisteredApplications" Name="Powershell Launcher" Value="SOFTWARE\WindowsTerminalLauncher\Powershell Launcher\Capabilities" Component_="PowershellLauncher"/>
+    <ROW Registry="PowershellLauncher_1" Root="1" Key="Software\WindowsTerminalLauncher\Powershell Launcher" Name="\"/>
+    <ROW Registry="RegisteredApplications" Root="1" Key="Software\RegisteredApplications" Name="\"/>
+    <ROW Registry="Software" Root="1" Key="Software" Name="\"/>
+    <ROW Registry="SupportedProtocols" Root="0" Key="Applications\WindowsTerminalLauncher\SupportedProtocols" Name="\"/>
+    <ROW Registry="SupportedProtocols_1" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat\SupportedProtocols" Name="\"/>
+    <ROW Registry="URLAssociations" Root="1" Key="Software\WindowsTerminalLauncher\Powershell Launcher\Capabilities\URLAssociations" Name="\"/>
+    <ROW Registry="Windows" Root="1" Key="Software\Microsoft\Windows" Name="\"/>
+    <ROW Registry="WindowsTerminalLauncher" Root="0" Key="Applications\WindowsTerminalLauncher" Name="\"/>
+    <ROW Registry="WindowsTerminalLauncher.Url.Launc_1" Root="1" Key="Software\Classes\WindowsTerminalLauncher.Url.Launcher" Name="\"/>
     <ROW Registry="WindowsTerminalLauncher.Url.Launc_2" Root="1" Key="Software\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" Name="WindowsTerminalLauncher.Url.Launcher_ssh" Value="#0" Component_="WindowsTerminalLauncher.Url.Launcher_ssh" VirtualValue="#"/>
+    <ROW Registry="WindowsTerminalLauncher.Url.Launche" Root="0" Key="WindowsTerminalLauncher.Url.Launcher" Name="\"/>
+    <ROW Registry="WindowsTerminalLauncher_1" Root="1" Key="Software\WindowsTerminalLauncher" Name="\"/>
+    <ROW Registry="WindowsTerminalSSHURL.bat" Root="1" Key="Software\Classes\Applications\Windows Terminal SSH URL.bat" Name="\"/>
     <ROW Registry="_" Root="0" Key="Applications\WindowsTerminalLauncher" Component_="_"/>
     <ROW Registry="__1" Root="0" Key="Applications\WindowsTerminalLauncher\shell\open\command" Value="wt --window 0 new-tab -- cmd /c &quot;[#windowsterminalsshurl.bat]&quot; &quot;%1&quot;" Component_="__1"/>
     <ROW Registry="__2" Root="0" Key="WindowsTerminalLauncher.Url.Launcher\shell\open\command" Value="wt --window 0 new-tab -- cmd /c &quot;[#windowsterminalsshurl.bat]&quot; &quot;%1&quot;" Component_="__2"/>
@@ -180,9 +255,25 @@
     <ROW Registry="__5" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat" Component_="__5"/>
     <ROW Registry="__6" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat\shell\open\command" Value="wt --window 0 new-tab -- cmd /c &quot;[#windowsterminalsshurl.bat]&quot; &quot;%1&quot;" Component_="__6"/>
     <ROW Registry="__7" Root="1" Key="Software\Classes\WindowsTerminalLauncher.Url.Launcher\shell\open\command" Value="wt --window 0 new-tab -- cmd /c &quot;[#windowsterminalsshurl.bat]&quot; &quot;%1&quot;" Component_="__7"/>
+    <ROW Registry="command" Root="0" Key="Applications\WindowsTerminalLauncher\shell\open\command" Name="\"/>
+    <ROW Registry="command_1" Root="0" Key="WindowsTerminalLauncher.Url.Launcher\shell\open\command" Name="\"/>
+    <ROW Registry="command_2" Root="1" Key="Software\Classes\Applications\Windows Terminal SSH URL.bat\shell\open\command" Name="\"/>
+    <ROW Registry="command_3" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat\shell\open\command" Name="\"/>
+    <ROW Registry="command_4" Root="1" Key="Software\Classes\WindowsTerminalLauncher.Url.Launcher\shell\open\command" Name="\"/>
+    <ROW Registry="open" Root="0" Key="Applications\WindowsTerminalLauncher\shell\open" Name="\"/>
+    <ROW Registry="open_1" Root="0" Key="WindowsTerminalLauncher.Url.Launcher\shell\open" Name="\"/>
+    <ROW Registry="open_2" Root="1" Key="Software\Classes\Applications\Windows Terminal SSH URL.bat\shell\open" Name="\"/>
+    <ROW Registry="open_3" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat\shell\open" Name="\"/>
+    <ROW Registry="open_4" Root="1" Key="Software\Classes\WindowsTerminalLauncher.Url.Launcher\shell\open" Name="\"/>
+    <ROW Registry="shell" Root="0" Key="Applications\WindowsTerminalLauncher\shell" Name="\"/>
+    <ROW Registry="shell_1" Root="0" Key="WindowsTerminalLauncher.Url.Launcher\shell" Name="\"/>
+    <ROW Registry="shell_2" Root="1" Key="Software\Classes\Applications\Windows Terminal SSH URL.bat\shell" Name="\"/>
+    <ROW Registry="shell_3" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat\shell" Name="\"/>
+    <ROW Registry="shell_4" Root="1" Key="Software\Classes\WindowsTerminalLauncher.Url.Launcher\shell" Name="\"/>
     <ROW Registry="ssh" Root="0" Key="Applications\WindowsTerminalLauncher\SupportedProtocols" Name="ssh" Component_="ssh"/>
     <ROW Registry="ssh_1" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat\SupportedProtocols" Name="ssh" Component_="ssh_1"/>
     <ROW Registry="ssh_2" Root="1" Key="Software\WindowsTerminalLauncher\Powershell Launcher\Capabilities\URLAssociations" Name="ssh" Value="WindowsTerminalLauncher.Url.Launcher" Component_="ssh_2"/>
+    <ROW Registry="windowsterminalsshurl.bat" Root="1" Key="Software\Classes\Applications\windows-terminal-ssh-url.bat" Name="\"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>

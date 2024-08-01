@@ -7,4 +7,9 @@ for /f "tokens=1,2 delims=:" %%a in ("%sshaddress%") do (
   set sshaddress=%%a
   set sshport=%%b
 )
-ssh %sshaddress% -p %sshport%
+if not "%sshport%"=="" (
+    set portoption=-p %sshport%
+) else (
+    set portoption=
+)
+ssh %sshaddress% %portoption%
